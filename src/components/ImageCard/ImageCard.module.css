@@ -1,0 +1,16 @@
+.img {
+    width: 320px;
+        height: 200px;
+        transition: 1s;
+}
+
+.img:hover {
+    transform: scale(1.1);
+}
+.text {
+    margin-top: -50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+    font-weight: lighter;
+}
+    

@@ -1,15 +1,16 @@
-const ImageGallery = ({ slides }) => {
-  if (!Array.isArray(slides) || slides.length === 0) {
+import ImageCard from "../ImageCard/ImageCard";
+import css from "../ImageGallery/ImageGallery.module.css";
+
+const ImageGallery = ({ images, openModal }) => {
+  if (!Array.isArray(images) || images.length === 0) {
     return null;
   }
   return (
     <div>
-      <ul>
-        {slides.map((slide) => (
-          <li key={slide.id}>
-            <div>
-              <img src={slide.urls.small} alt={slide.slug} />
-            </div>
+      <ul className={css.list}>
+        {images.map((image) => (
+          <li className={css.item} key={image.id}>
+            <ImageCard openModal={openModal} image={image} />
           </li>
         ))}
       </ul>
