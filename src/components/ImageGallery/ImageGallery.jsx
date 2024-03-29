@@ -10,7 +10,7 @@ const ImageGallery = ({ images, openModal }) => {
       <ul className={css.list}>
         {images.map((image) => (
           <li className={css.item} key={image.id}>
-            <ImageCard openModal={openModal} image={image} />
+            <ImageCard image={image} openModal={openModal} />
           </li>
         ))}
       </ul>

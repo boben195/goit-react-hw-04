@@ -3,6 +3,7 @@ import Loader from "./Loader/Loader";
 import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import ImageGallery from "./ImageGallery/ImageGallery";
 import LoadMoreBtn from "./LoadMoreBtn/LoadMoreBtn";
+import ImageModal from "./ImageModal/ImageModal";
 //import components(look up)************************************
 import "./App.css";
 import { useEffect, useState } from "react";
@@ -26,9 +27,11 @@ function App() {
 
   /*state for modal */
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [selectedImg, setSelectedImg] = useState({});
 
-  function openModal() {
+  function openModal(data) {
     setIsOpen(true);
+    setSelectedImg(data);
   }
   function closeModal() {
     setIsOpen(false);
@@ -48,13 +51,16 @@ function App() {
   /*Function add page */
 
   /*add modal */
-  Modal.setAppElement("#root");
+
+  useEffect(() => {
+    Modal.setAppElement("#root");
+  }, []);
 
   useEffect(() => {
     async function fetchData() {
       try {
         setIsLoading(true);
-        const { data, total } = await requestImages(query, page);
+        const { data } = await requestImages(query, page);
         console.log(page);
         setImages((prevImg) => {
           return [...prevImg, ...data];
@@ -98,6 +104,11 @@ function App() {
       {loadBtn && images.length > 0 && <LoadMoreBtn handleLoad={handleLoad} />}
       {isError && <ErrorMessage />}
       {isLoading && <Loader />}
+      <ImageModal
+        info={selectedImg}
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+      />
     </>
   );
 }
