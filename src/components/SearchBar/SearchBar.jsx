@@ -1,3 +1,5 @@
+import toast from "react-hot-toast";
+
 const SearchBar = ({ onAdd }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -5,7 +7,7 @@ const SearchBar = ({ onAdd }) => {
     const query = form.elements.query.value;
 
     if (form.elements.query.value.trim() === "") {
-      alert("Are you from cave? Enter something!!!");
+      toast("Are you from cave? Enter something!!!");
       return;
     }
     onAdd(query);

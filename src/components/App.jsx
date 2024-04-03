@@ -4,6 +4,8 @@ import ErrorMessage from "./ErrorMessage/ErrorMessage";
 import ImageGallery from "./ImageGallery/ImageGallery";
 import LoadMoreBtn from "./LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./ImageModal/ImageModal";
+
+import { Toaster } from "react-hot-toast";
 //import components(look up)************************************
 import "./App.css";
 import { useEffect, useState } from "react";
@@ -109,6 +111,7 @@ function App() {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
       />
+      <Toaster />
     </>
   );
 }
