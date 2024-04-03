@@ -62,6 +62,7 @@ function App() {
     async function fetchData() {
       try {
         setIsLoading(true);
+        setIsError(false);
         const { data } = await requestImages(query, page);
         console.log(page);
         setImages((prevImg) => {
@@ -74,6 +75,7 @@ function App() {
         // }
       } catch (err) {
         setIsError(true);
+        setLoadBtn(false);
       } finally {
         setIsLoading(false);
       }
