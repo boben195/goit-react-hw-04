@@ -64,7 +64,7 @@ function App() {
         setIsLoading(true);
         setIsError(false);
         const { data } = await requestImages(query, page);
-        console.log(page);
+
         setImages((prevImg) => {
           return [...prevImg, ...data];
         });
